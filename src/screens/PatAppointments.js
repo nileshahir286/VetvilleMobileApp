@@ -45,11 +45,19 @@ const PatAppointments = (props) => {
     const fetchData = async () => {
 
         var user = await AsyncStorage.getItem(Global.KEY_USER);
-        //console.log("........", JSON.parse(user).loggedInUser.patientId);
+
+        var patientID = "";
+
+        if (JSON.parse(user).roles[0] == "Doctor") {
+            patientID = props.patientId;
         
+        } else {
+            patientID = JSON.parse(user).loggedInUser.patientId;
+        }
+
         setIsLoading(true);
         setDataNotFound(false);
-        fetch(Global.URL_patient_appoinments + JSON.parse(user).loggedInUser.patientId, {
+        fetch(Global.URL_patient_appoinments + patientID, {
             method: 'GET',
             headers: {
                 Accept: 'application/json',
@@ -71,7 +79,7 @@ const PatAppointments = (props) => {
             })
             .finally(() => {
                 setIsLoading(false);
-            });                                                                                                   
+            });
     }
 
     const fetchDataResponse = (json) => {

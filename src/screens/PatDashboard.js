@@ -8,7 +8,7 @@ import {
 import Header from '../Components/Header';
 import Global from '../utils/Global';
 
-import { Container, Tab, Tabs, TabHeading, Icon, ScrollableTab } from 'native-base';
+import { Container, Tab, Tabs, TabHeading, ScrollableTab } from 'native-base';
 
 
 import PatAppointments from './PatAppointments';

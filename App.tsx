@@ -21,6 +21,7 @@ import SplashScreen from './src/screens/SplashScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import SignUpScreen from './src/screens/SignUpScreen';
 import HomeScreen from './src/screens/HomeScreen';
+import DocPatientProfile from './src/screens/DocPatientProfile';
 
 const theme = {
   ...DefaultTheme,
@@ -37,6 +38,7 @@ const App = () => {
           <Stack.Screen name="LoginScreen" component={LoginScreen} />
           <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
           <Stack.Screen name="HomeScreen" component={HomeScreen} />
+          <Stack.Screen name="DocPatientProfile" component={DocPatientProfile} />
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>

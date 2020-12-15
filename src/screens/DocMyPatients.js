@@ -20,6 +20,7 @@ import { Button, Card } from 'react-native-paper';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
+import Feather from 'react-native-vector-icons/Feather';
 
 
 const DocMyPatients = (props) => {
@@ -95,65 +96,77 @@ const DocMyPatients = (props) => {
     const renderItem = ({ item }) => {
         // console.log(item);
         return (
-            <View style={{ width: "50%" }}>
-                <TouchableOpacity onPress={() => { }}>
+            <View style={{}}>
+                <TouchableOpacity onPress={() => {
+                    props.navigation.navigate("DocPatientProfile", {
+                        patientInfo: item
+                    })
+                }}>
                     <Card style={{ padding: 8, marginLeft: 8, marginBottom: 8 }}>
 
-                        <View style={{ width: "100%", alignItems: "center" }}>
-                            <View style={{ justifyContent: "center", padding: 4 }}>
-                                <Image style={{ height: 80, width: 80, borderRadius: 40 }} source={{ uri: item.profileImage ? item.profileImage : "https://vetville.accepire.co/assets/img/default.png" }} />
+                        <View style={{ width: "100%", flexDirection: "row" }}>
+                            <View style={{ justifyContent: "center", padding: 4, width: "25%", alignItems: "center" }}>
+                                <Image style={{ height: 64, width: 64, borderRadius: 32 }} source={{ uri: item.profileImage ? item.profileImage : "https://vetville.accepire.co/assets/img/default.png" }} />
                             </View>
 
-                            <View style={{ padding: 8, marginTop: 4 }}>
-                                <Text style={{ fontWeight: "bold", fontSize: 15 }}>{item.firstName} {item.lastName}</Text>
+                            <View style={{ width: "75%" }}>
+                                <View style={{ padding: 8, marginTop: 4 }}>
+                                    <Text style={{ fontWeight: "bold", fontSize: 15 }}>{item.firstName} {item.lastName}</Text>
+                                </View>
+
+                                <View style={{ padding: 4, flexDirection: "row" }}>
+                                    <Text style={{ color: "#696969", fontWeight: "bold", fontSize: 14 }}>Patient ID : </Text>
+                                    <Text style={{ color: "#696969", fontSize: 14 }}>{item.patientNumber}</Text>
+                                </View>
+
+                                <View style={{ padding: 4, flexDirection: "row" }}>
+                                    <Entypo name="location-pin" color="#696969" size={15} />
+                                    <Text style={{ color: "#696969", fontSize: 14 }}>{item.address}, {item.city}</Text>
+                                </View>
+
+                                <View style={{ padding: 4, flexDirection: "row" }}>
+                                    <Entypo name="phone" color="#696969" size={14} />
+                                    <Text style={{ color: "#696969", fontSize: 14 }}> {item.phone}</Text>
+                                </View>
+
+
+
                             </View>
 
-                            <View style={{ padding: 4, flexDirection: "row" }}>
-                                <Text style={{ color: "#696969", fontWeight: "bold", fontSize: 14 }}>Patient ID : </Text>
-                                <Text style={{ color: "#696969", fontSize: 14 }}>{item.patientNumber}</Text>
-                            </View>
-
-                            <View style={{ padding: 4, flexDirection: "row" }}>
-                                <Entypo name="location-pin" color="#696969" size={15} />
-                                <Text style={{ color: "#696969", fontSize: 14 }}>{item.address}, {item.city}</Text>
-                            </View>
-                            
-                            <View style={{ padding: 4, flexDirection: "row" }}>
-                                <Entypo name="phone" color="#696969" size={14} />
-                                <Text style={{ color: "#696969", fontSize: 14 }}> {item.phone}</Text>
-                            </View>
-
+                        </View>
+                        <View>
                             <View style={{ height: 1, marginTop: 4, backgroundColor: "#D3D3D3", width: "100%" }} />
 
 
+
                             <View style={{ padding: 4, flexDirection: "row" }}>
-                                <Text style={{ color: "#696969", fontWeight: "bold", fontSize: 14 }}>Patient ID : </Text>
-                                <Text style={{ color: "#696969", fontSize: 14 }}>{item.patientNumber}</Text>
+                                <Text style={{ color: "#696969", fontWeight: "bold", fontSize: 14 }}>Phone : </Text>
+                                <Text style={{ color: "#696969", fontSize: 14 }}>{item.phone}</Text>
                             </View>
+
+                            <View style={{ padding: 4, flexDirection: "row" }}>
+                                <Text style={{ color: "#696969", fontWeight: "bold", fontSize: 14 }}>Age : </Text>
+                                <Text style={{ color: "#696969", fontSize: 14 }}>51 year</Text>
+                            </View>
+
+                            <View style={{ padding: 4, flexDirection: "row" }}>
+                                <Text style={{ color: "#696969", fontWeight: "bold", fontSize: 14 }}>Blood Group : </Text>
+                                <Text style={{ color: "#696969", fontSize: 14 }}>{item.bloodGroup ? item.bloodGroup : ""}</Text>
+                            </View>
+                            {/* 
+                            <View style={{ width: "100%", flexDirection: 'row', }}>
+                                <TouchableOpacity style={{ borderWidth: 1, padding: 8, marginLeft: 8, marginVertical: 4 }}>
+                                    <Feather name="message-square" size={20} />
+                                </TouchableOpacity>
+                            </View> */}
 
 
 
                         </View>
 
-                        {/* <View style={{ marginTop: 8, alignItems: "center" }}>
-
-                        <Button
-                            icon="eye-outline"
-                            style={{ width: "100%" }}
-                            dark={true}
-                            color={Global.buttonColor2}
-                            mode="contained"
-                            onPress={() => {
-                                setDialogItem(item);
-                                setDialogVisible(!dialogVisible);
-                            }}
-                        >
-                            View
-                    </Button>
-                    </View> */}
                     </Card>
                 </TouchableOpacity>
-            </View>
+            </View >
         );
     }
 
@@ -182,7 +195,7 @@ const DocMyPatients = (props) => {
                             renderItem={renderItem}
                             numColumns={2}
                         />
-                        <View style={{ height: 180 }} />
+                        <View style={{ height: 200 }} />
                     </ScrollView>
                 </View>
             );

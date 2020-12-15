@@ -18,14 +18,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginScreen = ({ navigation }) => {
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    // const [email, setEmail] = useState("");
+    // const [password, setPassword] = useState("");
 
     // const [email, setEmail] = useState("patient@accepire.co");
     // const [password, setPassword] = useState("Patient@12345");
     
-    // const [email, setEmail] = useState("doctor@accepire.co");
-    // const [password, setPassword] = useState("Doctor@12345");
+    const [email, setEmail] = useState("doctor@accepire.co");
+    const [password, setPassword] = useState("Doctor@12345");
 
     const [isLoading, setIsLoading] = useState(false);
 
